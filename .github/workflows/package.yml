@@ -13,8 +13,13 @@ jobs:
     steps:
     - name: Checkout
       uses: actions/checkout@v2
+    - name: Use Node 17
+      uses: actions/setup-node@v2
+      with:
+        node-version: '17'
     - name: Build
       run: |
+        npm i
         cd macos
         pod install
         xcodebuild -workspace billboard.xcworkspace -scheme billboard-macOS ARCHS='x86_64' ONLY_ACTIVE_ARCH=NO DSTROOT="release" archive
