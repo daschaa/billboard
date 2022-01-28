@@ -16,4 +16,5 @@ jobs:
     - name: Build
       run: |
         cd macos
-        xcodebuild -workspace billboard.xcworkspace -scheme billboard-macOS ARCHS='x86_64' ONLY_ACTIVE_ARCH=NO DSTROOT="/Users/josh/Desktop/ReleaseLocation" archive
+        pod install
+        xcodebuild -workspace billboard.xcworkspace -scheme billboard-macOS ARCHS='x86_64' ONLY_ACTIVE_ARCH=NO DSTROOT="release" archive
