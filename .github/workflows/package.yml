@@ -1,0 +1,19 @@
+name: Xcode - Build
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build:
+    name: Build using xcodebuild command
+    runs-on: macos-latest
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2
+    - name: Build
+      run: |
+        cd macos
+        xcodebuild -workspace billboard.xcworkspace -scheme billboard-macOS ARCHS='x86_64' ONLY_ACTIVE_ARCH=NO DSTROOT="/Users/josh/Desktop/ReleaseLocation" archive
