@@ -26,7 +26,7 @@ jobs:
     - name: Upload Artifact
       uses: actions/upload-artifact@v2
       with:
-        name: billboard-artifact
+        name: Billboard.app
         path: ./macos/release/Applications/billboard.app
   create-prod-release:
     runs-on: ubuntu-latest
@@ -36,7 +36,7 @@ jobs:
     - name: Download Archive Artifact iOS
       uses: actions/download-artifact@v2
       with:
-        name: billboard-artifact
+        name: Billboard.app
     - name: Get Release Name
       id: set_release_name
       run: |
@@ -63,6 +63,6 @@ jobs:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
         upload_url: ${{ steps.create_release.outputs.upload_url }}
-        asset_path: ./billboard.app
-        asset_name: billboard.app
+        asset_path: ./Billboard.app
+        asset_name: Billboard.app
         asset_content_type: application/octet-stream
