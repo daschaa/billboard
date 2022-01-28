@@ -19,6 +19,7 @@ jobs:
         node-version: '17'
     - name: Build
       run: |
+        export NODE_OPTIONS=--openssl-legacy-provider
         npm i
         cd macos
         pod install
