@@ -21,16 +21,10 @@ jobs:
         cd macos
         pod install
         xcodebuild -workspace billboard.xcworkspace -scheme billboard-macOS ARCHS='x86_64' ONLY_ACTIVE_ARCH=NO DSTROOT="release" archive
-    - name: Get Release Name
-      id: set_release_name
-      run: |
-        content=`cat ./package.json`
-        # the following lines are only required for multi line json
-        content="${content//'%'/'%25'}"
-        content="${content//$'\n'/'%0A'}"
-        content="${content//$'\r'/'%0D'}"
-        # end of optional handling for multi line json
-        echo "::set-output name=packageJson::$content"
+        cd ..
+    - name: Get Version
+      id: package-version
+      uses: martinbeentjes/npm-get-version-action@master
     - name: Upload Artifact
       uses: actions/upload-artifact@v2
       with:
@@ -40,7 +34,7 @@ jobs:
       uses: softprops/action-gh-release@v1
       with:
         files: ./macos/release/Applications/billboard.app
-        tag_name: ${{ fromJson(steps.set_release_name.outputs.packageJson).version }}
-        release_name: Release ${{ fromJson(steps.set_release_name.outputs.packageJson).version }}
+        tag_name: ${{ steps.package-version.outputs.current-version}
+        name: Release ${{ steps.package-version.outputs.current-version}
         draft: false
         prerelease: false
