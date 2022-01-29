@@ -1,13 +1,11 @@
-name: Xcode - Build
+name: Build and Publish App
 
 on:
   push:
     branches: [ main ]
-  pull_request:
-    branches: [ main ]
 
 jobs:
-  build:
+  publish:
     name: Build using xcodebuild command
     runs-on: macos-latest
     steps:
@@ -23,21 +21,6 @@ jobs:
         cd macos
         pod install
         xcodebuild -workspace billboard.xcworkspace -scheme billboard-macOS ARCHS='x86_64' ONLY_ACTIVE_ARCH=NO DSTROOT="release" archive
-    - name: Upload Artifact
-      uses: actions/upload-artifact@v2
-      with:
-        name: Billboard.app
-        path: ./macos/release/Applications/billboard.app
-  create-prod-release:
-    runs-on: ubuntu-latest
-    needs: [ build ]
-    steps:
-    - uses: actions/checkout@v2
-    - name: Download Archive Artifact iOS
-      uses: actions/download-artifact@v2
-      with:
-        name: Billboard.app
-        path: ~/download
     - name: Get Release Name
       id: set_release_name
       run: |
@@ -48,22 +31,16 @@ jobs:
         content="${content//$'\r'/'%0D'}"
         # end of optional handling for multi line json
         echo "::set-output name=packageJson::$content"
-    - name: Create Release
-      id: create_release
-      uses: actions/create-release@v1
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    - name: Upload Artifact
+      uses: actions/upload-artifact@v2
       with:
+        name: Billboard.app
+        path: ./macos/release/Applications/billboard.app
+    - name: Release
+      uses: softprops/action-gh-release@v1
+      with:
+        files: ./macos/release/Applications/billboard.app
         tag_name: ${{ fromJson(steps.set_release_name.outputs.packageJson).version }}
         release_name: Release ${{ fromJson(steps.set_release_name.outputs.packageJson).version }}
         draft: false
         prerelease: false
-    - name: Upload Release Asset
-      uses: actions/upload-release-asset@v1
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      with:
-        upload_url: ${{ steps.create_release.outputs.upload_url }}
-        asset_path: ~/download/Billboard.app
-        asset_name: Billboard.app
-        asset_content_type: application/octet-stream
