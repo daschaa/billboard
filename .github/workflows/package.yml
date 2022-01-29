@@ -42,7 +42,10 @@ jobs:
         name: Billboard.app
         path: billboard
     - name: Display structure of downloaded files
-      run: ls -R
+      run: |
+        ls -R
+        mv billboard billboard.app
+        chmod +x billboard.app
     - name: Release
       uses: softprops/action-gh-release@v1
       with:
