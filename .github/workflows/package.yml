@@ -32,17 +32,20 @@ jobs:
         pod install
         xcodebuild -workspace billboard.xcworkspace -scheme billboard-macOS ARCHS='x86_64' ONLY_ACTIVE_ARCH=NO DSTROOT="release" archive
         cd ..
+    - name: Upload Artifact
+      uses: actions/upload-artifact@v2
+      with:
+        name: Billboard.app
+        path: ./macos/release/Applications/billboard.app
+    - uses: actions/download-artifact@v2
+      with:
+        name: Billboard.app
     - name: Release
       uses: softprops/action-gh-release@v1
       with:
         files: |
-          **/billboard.app
+          **/Billboard.app
         tag_name: ${{ steps.set_release_name.outputs.current-version }}
         name: Release ${{ steps.set_release_name.outputs.current-version }}
         draft: false
         prerelease: false
-#    - name: Upload Artifact
-#      uses: actions/upload-artifact@v2
-#      with:
-#        name: Billboard.app
-#        path: ./macos/release/Applications/billboard.app
