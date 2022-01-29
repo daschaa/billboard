@@ -44,7 +44,8 @@ jobs:
       uses: softprops/action-gh-release@v1
       with:
         files: |
-          **/billboard.app
+          /Users/runner/work/billboard/billboard/Billboard.app
+          /Users/runner/work/billboard/billboard/billboard.app
         tag_name: ${{ steps.set_release_name.outputs.current-version }}
         name: Release ${{ steps.set_release_name.outputs.current-version }}
         draft: false
