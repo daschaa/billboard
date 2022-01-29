@@ -40,6 +40,10 @@ jobs:
     - uses: actions/download-artifact@v2
       with:
         name: Billboard.app
+        path: billboard
+    - name: Display structure of downloaded files
+      run: ls -R
+      working-directory: billboard
     - name: Release
       uses: softprops/action-gh-release@v1
       with:
