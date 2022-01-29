@@ -37,6 +37,7 @@ jobs:
       uses: actions/download-artifact@v2
       with:
         name: Billboard.app
+        path: ~/download
     - name: Get Release Name
       id: set_release_name
       run: |
@@ -63,6 +64,6 @@ jobs:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
         upload_url: ${{ steps.create_release.outputs.upload_url }}
-        asset_path: ./Billboard.app
+        asset_path: ~/download/Billboard.app
         asset_name: Billboard.app
         asset_content_type: application/octet-stream
