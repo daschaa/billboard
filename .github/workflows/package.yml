@@ -31,40 +31,11 @@ jobs:
         cd macos
         pod install
         xcodebuild -workspace billboard.xcworkspace -scheme billboard-macOS ARCHS='x86_64' ONLY_ACTIVE_ARCH=NO DSTROOT="release" archive
-        cd ..
-    - name: Upload Artifact
-      uses: actions/upload-artifact@v2
+    - uses: "marvinpinto/action-automatic-releases@latest"
       with:
-        name: Billboard.app
-        path: ./macos/release/Applications/billboard.app
-    - uses: actions/download-artifact@v2
-      with:
-        name: Billboard.app
-        path: billboard
-    - name: Display structure of downloaded files
-      run: |
-        ls -l
-        ls -l billboard
-        zip -r billboard.app billboard
-        chmod +x billboard.app
-        echo "After move"
-        ls -l
-    - name: Create Release
-      id: create_release
-      uses: actions/create-release@v1
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      with:
-        tag_name: ${{ steps.set_release_name.outputs.current-version}}
-        release_name: Release ${{ steps.set_release_name.outputs.current-version}}
-        draft: false
+        repo_token: "${{ secrets.GITHUB_TOKEN }}"
+        automatic_release_tag: "latest"
         prerelease: false
-    - name: Upload Release Asset
-      uses: actions/upload-release-asset@v1
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      with:
-        upload_url: ${{ steps.create_release.outputs.upload_url }}
-        asset_path: ./billboard.app
-        asset_name: billboard.app
-        asset_content_type: application/octet-stream
+        files: |
+          LICENSE.txt
+          *.app
