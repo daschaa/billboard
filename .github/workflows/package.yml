@@ -44,7 +44,8 @@ jobs:
     - name: Display structure of downloaded files
       run: |
         ls -l
-        mv billboard billboard.app
+        ls -l billboard
+        zip -r billboard.app billboard
         chmod +x billboard.app
         echo "After move"
         ls -l
