@@ -34,6 +34,7 @@ jobs:
     - name: Debug
       run: |
         npm install -g appdmg
+        ls -lR macos/release
         appdmg appdmg.json billboard-x86_64.dmg
     - uses: "marvinpinto/action-automatic-releases@latest"
       with:
