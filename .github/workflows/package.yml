@@ -31,11 +31,14 @@ jobs:
         cd macos
         pod install
         xcodebuild -workspace billboard.xcworkspace -scheme billboard-macOS ARCHS='x86_64' ONLY_ACTIVE_ARCH=NO DSTROOT="release" archive
+    - name: Debug
+      run: |
+        ls -lR macos
     - uses: "marvinpinto/action-automatic-releases@latest"
       with:
         repo_token: "${{ secrets.GITHUB_TOKEN }}"
         automatic_release_tag: "latest"
         prerelease: false
         files: |
-          LICENSE.txt
-          *.app
+          LICENSE
+          ./macos/release/Applications/billboard.app
