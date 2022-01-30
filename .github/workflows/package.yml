@@ -31,15 +31,14 @@ jobs:
         cd macos
         pod install
         xcodebuild -workspace billboard.xcworkspace -scheme billboard-macOS ARCHS='x86_64' ONLY_ACTIVE_ARCH=NO DSTROOT="release" archive
-    - name: Debug
+    - name: Bundle dmg
       run: |
         npm install -g appdmg
-        ls -lR macos/release
         appdmg appdmg.json billboard-x86_64.dmg
     - uses: "marvinpinto/action-automatic-releases@latest"
       with:
         repo_token: "${{ secrets.GITHUB_TOKEN }}"
-        automatic_release_tag: "latest"
+        automatic_release_tag: ${{steps.set_release_name.outputs.current-version}}
         prerelease: false
         files: |
           LICENSE
