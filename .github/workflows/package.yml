@@ -15,16 +15,9 @@ jobs:
       uses: actions/setup-node@v2
       with:
         node-version: '16'
-    - name: Get Release Name
+    - name: Get Release name
       id: set_release_name
-      run: |
-        version=`cat package.json \
-         | grep version \
-         | head -1 \
-         | awk -F: '{ print $2 }' \
-         | sed 's/[",]//g'`
-        echo "🥳 Setting release version to: $version"
-        echo "::set-output name=current-version::$version"
+      uses: daschaa/package-version@v1.1.0
     - name: Build
       run: |
         npm i
