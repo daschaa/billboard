@@ -8,6 +8,7 @@ var statusBarItem: NSStatusItem = NSStatusBar.system.statusItem(withLength: CGFl
 class AppDelegate: NSObject, NSApplicationDelegate {
   var popover: NSPopover!
   var bridge: RCTBridge!
+  @IBOutlet weak var menu: NSMenu?
 
   var statusBarTitle: String = "billboard" {
       didSet {
@@ -34,12 +35,24 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     popover.animates = true
     popover.behavior = .transient
     popover.contentViewController = rootViewController
-
+    
     if let button = statusBarItem.button {
-      button.action = #selector(togglePopover(_:))
+      button.action = #selector(statusBarButtonClicked(_:))
+      button.sendAction(on: [.leftMouseUp, .rightMouseUp])
       button.title = "👋 Click me"
     }
   }
+  
+  @objc func statusBarButtonClicked(_ sender: NSStatusBarButton) {
+      let event = NSApp.currentEvent!
+      if event.type == NSEvent.EventType.rightMouseUp {
+        statusBarItem.menu = menu
+        statusBarItem.button?.performClick(nil)
+        statusBarItem.menu = nil
+      } else {
+        togglePopover(sender)
+      }
+    }
 
   @objc func togglePopover(_ sender: AnyObject?) {
       if let button = statusBarItem.button {
