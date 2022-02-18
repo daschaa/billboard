@@ -1,0 +1,36 @@
+name: Publish new app version
+
+on: workflow_dispatch
+
+jobs:
+  publish:
+    name: Build using xcodebuild command
+    runs-on: macos-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Use Node 16
+        uses: actions/setup-node@v2
+        with:
+          node-version: '16'
+      - name: Get Release name
+        id: set_release_name
+        uses: daschaa/package-version@v1.1.0
+      - name: Build
+        run: |
+          npm i
+          cd macos
+          pod install
+          xcodebuild -workspace billboard.xcworkspace -scheme billboard-macOS ARCHS='x86_64' ONLY_ACTIVE_ARCH=NO DSTROOT="release" archive
+      - name: Bundle dmg
+        run: |
+          npm install -g appdmg
+          appdmg appdmg.json billboard-x86_64.dmg
+      - uses: "marvinpinto/action-automatic-releases@latest"
+        with:
+          repo_token: "${{ secrets.GITHUB_TOKEN }}"
+          automatic_release_tag: ${{steps.set_release_name.outputs.current-version}}
+          prerelease: false
+          files: |
+            LICENSE
+            billboard-x86_64.dmg
