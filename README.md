@@ -27,3 +27,23 @@ is kind of a PoC that is possible to bind the status bar to an React-Native app.
 ## 👯 Contributing
 
 Any contributions are highly welcomed. If you have any ideas, please create an issue before creating an pull-request. Thanks in advance ❤️
+
+## 🧑🏼‍💻 Local Development
+
+Feel free to checkout the repo and hack some stuff on your own! ❤️ To give you some advices in getting the code to run read
+the following section.
+
+### Prerequisites
+
+- Node installed (preferably use [nvm](https://github.com/nvm-sh/nvm) to use different node version)
+  - The code is usually run with v16.13 - [There is a strange bug when using v17](https://stackoverflow.com/questions/69647332/cannot-read-properties-of-undefined-reading-transformfile-at-bundler-transfo)
+- XCode with CLI tools installed
+
+### Commands to run
+If everything is installed correctly, the app should start by simply run the install-and-run script.
+```bash
+# From the project root directory
+./scripts/install-and-run.sh
+```
+#### 🚫 "Help! I ran into some issue!"
+Arrrgh. I swear it runs on my machine 👀 But just open up an issue and we'll try to fix the issue together. Please try to provide as many details as you can.
