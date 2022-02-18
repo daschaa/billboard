@@ -2,7 +2,7 @@ name: Build app and upload artifacts
 
 on:
   push:
-    branches: [ main ]
+    branches: [ main, develop ]
 
 jobs:
   build:
