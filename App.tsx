@@ -21,9 +21,12 @@ const App = () => {
       <TextInput
         style={{
           width: '80%',
+          borderColor: 'transparent',
           borderBottomWidth: 1,
           borderBottomColor: '#7d7d7d',
         }}
+        selectionColor={'grey'}
+        placeholderTextColor={'#a0a0a0'}
         placeholder={'Type your own billboard!'}
         onChangeText={AppDelegate.changeStatusBarTitle}
       />
