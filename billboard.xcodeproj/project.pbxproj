@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		D64A921F2BB4123300E934C7 /* billboardApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D64A921E2BB4123300E934C7 /* billboardApp.swift */; };
-		D64A92212BB4123300E934C7 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D64A92202BB4123300E934C7 /* ContentView.swift */; };
 		D64A92232BB4123400E934C7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D64A92222BB4123400E934C7 /* Assets.xcassets */; };
 		D64A92262BB4123400E934C7 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D64A92252BB4123400E934C7 /* Preview Assets.xcassets */; };
 		D64A922E2BB4126E00E934C7 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D64A922D2BB4126E00E934C7 /* Info.plist */; };
@@ -20,7 +19,6 @@
 /* Begin PBXFileReference section */
 		D64A921B2BB4123300E934C7 /* billboard.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = billboard.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D64A921E2BB4123300E934C7 /* billboardApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = billboardApp.swift; sourceTree = "<group>"; };
-		D64A92202BB4123300E934C7 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		D64A92222BB4123400E934C7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D64A92252BB4123400E934C7 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		D64A92272BB4123400E934C7 /* billboard.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = billboard.entitlements; sourceTree = "<group>"; };
@@ -63,7 +61,6 @@
 			isa = PBXGroup;
 			children = (
 				D64A921E2BB4123300E934C7 /* billboardApp.swift */,
-				D64A92202BB4123300E934C7 /* ContentView.swift */,
 				D64A92222BB4123400E934C7 /* Assets.xcassets */,
 				D64A92272BB4123400E934C7 /* billboard.entitlements */,
 				D64A92242BB4123400E934C7 /* Preview Content */,
@@ -153,7 +150,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D64A92212BB4123300E934C7 /* ContentView.swift in Sources */,
 				D64A92302BB4132800E934C7 /* StatusBarController.swift in Sources */,
 				D64A921F2BB4123300E934C7 /* billboardApp.swift in Sources */,
 				D64A92322BB415B800E934C7 /* TextInputWindowController.swift in Sources */,
