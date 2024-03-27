@@ -1,0 +1,77 @@
+name: Build and Release
+
+on:
+  workflow_dispatch:
+  push:
+    tags:
+      - 'v*'
+
+jobs:
+  build:
+    name: Build macOS Application
+    runs-on: macos-latest
+    strategy:
+      matrix:
+        architecture: [x86_64, arm64]
+    steps:
+      - name: Check out code
+        uses: actions/checkout@v2
+
+      - name: Set up Xcode
+        uses: maxim-lobanov/setup-xcode@v1
+        with:
+          xcode-version: 'latest'
+
+      - name: Build .app for ${{ matrix.architecture }}
+        run: |
+          xcodebuild -project billboard.xcodeproj -scheme billboard -configuration Release -arch ${{ matrix.architecture }} -derivedDataPath derivedData
+          cp -r "derivedData/Build/Products/Release/billboard.app" "billboard-${{ matrix.architecture }}.app"
+          
+      - name: Archive .app for ${{ matrix.architecture }}
+        run: |
+          zip -r "billboard-${{ matrix.architecture }}.zip" "billboard-${{ matrix.architecture }}.app"
+      
+      - name: Upload Artifact
+        uses: actions/upload-artifact@v2
+        with:
+          name: billboard-${{ matrix.architecture }}
+          path: billboard-${{ matrix.architecture }}.zip
+
+  release:
+    name: Create Release
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Download Artifacts
+        uses: actions/download-artifact@v2
+
+      - name: Create Release
+        id: create_release
+        uses: actions/create-release@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          tag_name: ${{ github.ref }}
+          release_name: Release ${{ github.ref }}
+          draft: false
+          prerelease: false
+
+      - name: Upload Release Asset (x86_64)
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }}
+          asset_path: ./billboard-x86_64.zip
+          asset_name: billboard-x86_64.zip
+          asset_content_type: application/zip
+
+      - name: Upload Release Asset (arm64)
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }}
+          asset_path: ./billboard-arm64.zip
+          asset_name: billboard-arm64.zip
+          asset_content_type: application/zip
