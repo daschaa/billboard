@@ -2,9 +2,6 @@ name: Build and Release
 
 on:
   workflow_dispatch:
-  push:
-    branches:
-      - 'v2'
 
 jobs:
   build:
@@ -25,11 +22,11 @@ jobs:
       - name: Build .app for ${{ matrix.architecture }}
         run: |
           xcodebuild -project billboard.xcodeproj -scheme billboard -configuration Release -arch ${{ matrix.architecture }} -derivedDataPath derivedData
-          cp -r "derivedData/Build/Products/Release/billboard.app" "billboard-${{ matrix.architecture }}.app"
+          cp -r "derivedData/Build/Products/Release/billboard.app" "Billboard.app"
           
       - name: Archive .app for ${{ matrix.architecture }}
         run: |
-          zip -r "billboard-${{ matrix.architecture }}.zip" "billboard-${{ matrix.architecture }}.app"
+          zip -r "billboard-${{ matrix.architecture }}.zip" "Billboard.app"
       
       - name: Upload Artifact
         uses: actions/upload-artifact@v2
