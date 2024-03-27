@@ -11,6 +11,10 @@
 		D64A92212BB4123300E934C7 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D64A92202BB4123300E934C7 /* ContentView.swift */; };
 		D64A92232BB4123400E934C7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D64A92222BB4123400E934C7 /* Assets.xcassets */; };
 		D64A92262BB4123400E934C7 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D64A92252BB4123400E934C7 /* Preview Assets.xcassets */; };
+		D64A922E2BB4126E00E934C7 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D64A922D2BB4126E00E934C7 /* Info.plist */; };
+		D64A92302BB4132800E934C7 /* StatusBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D64A922F2BB4132800E934C7 /* StatusBarController.swift */; };
+		D64A92322BB415B800E934C7 /* TextInputWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D64A92312BB415B800E934C7 /* TextInputWindowController.swift */; };
+		D64A92362BB41A9F00E934C7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D64A92352BB41A9F00E934C7 /* Assets.xcassets */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -20,6 +24,10 @@
 		D64A92222BB4123400E934C7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D64A92252BB4123400E934C7 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		D64A92272BB4123400E934C7 /* billboard.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = billboard.entitlements; sourceTree = "<group>"; };
+		D64A922D2BB4126E00E934C7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D64A922F2BB4132800E934C7 /* StatusBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusBarController.swift; sourceTree = "<group>"; };
+		D64A92312BB415B800E934C7 /* TextInputWindowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextInputWindowController.swift; sourceTree = "<group>"; };
+		D64A92352BB41A9F00E934C7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -36,6 +44,8 @@
 		D64A92122BB4123300E934C7 = {
 			isa = PBXGroup;
 			children = (
+				D64A92352BB41A9F00E934C7 /* Assets.xcassets */,
+				D64A922D2BB4126E00E934C7 /* Info.plist */,
 				D64A921D2BB4123300E934C7 /* billboard */,
 				D64A921C2BB4123300E934C7 /* Products */,
 			);
@@ -57,6 +67,8 @@
 				D64A92222BB4123400E934C7 /* Assets.xcassets */,
 				D64A92272BB4123400E934C7 /* billboard.entitlements */,
 				D64A92242BB4123400E934C7 /* Preview Content */,
+				D64A922F2BB4132800E934C7 /* StatusBarController.swift */,
+				D64A92312BB415B800E934C7 /* TextInputWindowController.swift */,
 			);
 			path = billboard;
 			sourceTree = "<group>";
@@ -129,6 +141,8 @@
 			files = (
 				D64A92262BB4123400E934C7 /* Preview Assets.xcassets in Resources */,
 				D64A92232BB4123400E934C7 /* Assets.xcassets in Resources */,
+				D64A92362BB41A9F00E934C7 /* Assets.xcassets in Resources */,
+				D64A922E2BB4126E00E934C7 /* Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -140,7 +154,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				D64A92212BB4123300E934C7 /* ContentView.swift in Sources */,
+				D64A92302BB4132800E934C7 /* StatusBarController.swift in Sources */,
 				D64A921F2BB4123300E934C7 /* billboardApp.swift in Sources */,
+				D64A92322BB415B800E934C7 /* TextInputWindowController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -277,6 +293,7 @@
 				DEVELOPMENT_ASSET_PATHS = "\"billboard/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Info.plist;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -302,6 +319,7 @@
 				DEVELOPMENT_ASSET_PATHS = "\"billboard/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Info.plist;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
