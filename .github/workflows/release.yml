@@ -41,6 +41,8 @@ jobs:
     steps:
       - name: Download Artifacts
         uses: actions/download-artifact@v2
+      - name: Debug
+        run: ls -al
       - name: Create release
         uses: softprops/action-gh-release@v2
         if: startsWith(github.ref, 'refs/tags/')
