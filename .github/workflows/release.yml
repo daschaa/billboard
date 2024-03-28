@@ -48,5 +48,5 @@ jobs:
         if: startsWith(github.ref, 'refs/tags/')
         with:
           files: |
-            billboard-x86_64.zip
-            billboard-arm64.zip
+            ./**/billboard-x86_64.zip
+            ./**/billboard-arm64.zip
