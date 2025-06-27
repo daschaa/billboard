@@ -10,8 +10,11 @@ import SwiftUI
 @main
 struct billboardApp: App {
     @NSApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
-        
-        var body: some Scene {}
+        var body: some Scene {
+            Settings {
+                Text("Placeholder window. Please close if you see this")
+            }
+        }
 }
 
 class AppDelegate: NSObject, NSApplicationDelegate {
