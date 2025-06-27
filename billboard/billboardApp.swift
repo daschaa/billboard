@@ -11,11 +11,7 @@ import SwiftUI
 struct billboardApp: App {
     @NSApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
         
-        var body: some Scene {
-            Settings {
-                Text("Settings")
-            }
-        }
+        var body: some Scene {}
 }
 
 class AppDelegate: NSObject, NSApplicationDelegate {
