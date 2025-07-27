@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 56;
+	objectVersion = 70;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -27,6 +27,10 @@
 		D64A92312BB415B800E934C7 /* TextInputWindowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextInputWindowController.swift; sourceTree = "<group>"; };
 		D64A92352BB41A9F00E934C7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 /* End PBXFileReference section */
+
+/* Begin PBXFileSystemSynchronizedRootGroup section */
+		299B349E2E36930500E241B5 /* Marquee */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = Marquee; sourceTree = "<group>"; };
+/* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		D64A92182BB4123300E934C7 /* Frameworks */ = {
@@ -65,6 +69,7 @@
 				D64A92272BB4123400E934C7 /* billboard.entitlements */,
 				D64A92242BB4123400E934C7 /* Preview Content */,
 				D64A922F2BB4132800E934C7 /* StatusBarController.swift */,
+				299B349E2E36930500E241B5 /* Marquee */,
 				D64A92312BB415B800E934C7 /* TextInputWindowController.swift */,
 			);
 			path = billboard;
@@ -92,6 +97,9 @@
 			buildRules = (
 			);
 			dependencies = (
+			);
+			fileSystemSynchronizedGroups = (
+				299B349E2E36930500E241B5 /* Marquee */,
 			);
 			name = billboard;
 			productName = billboard;
