@@ -1,10 +1,3 @@
-//
-//  Model.swift
-//  billboard
-//
-//  Created by Mathis Gaignet on 27/07/2025.
-//
-
 import Foundation
 import SwiftUI
 

@@ -1,10 +1,3 @@
-//
-//  MarqueeText.swift
-//  billboard
-//
-//  Created by Mathis Gaignet on 25/07/2025.
-//
-
 import SwiftUI
 
 struct MarqueeText: View {
