@@ -1,4 +1,5 @@
 import AppKit
+import SwiftUI
 
 class StatusBarController: NSObject {
     private var statusBar: NSStatusBar
@@ -57,7 +58,20 @@ class StatusBarController: NSObject {
 
     private func updateStatusBarItemTitle(with text: String) {
         if let button = statusBarItem.button {
-            button.title = text
+            button.subviews.forEach { $0.removeFromSuperview() }
+            
+            let marqueeView = MarqueeText(text: text)
+            let hostingView = NSHostingView(rootView: marqueeView)
+            button.addSubview(hostingView)
+
+            hostingView.translatesAutoresizingMaskIntoConstraints = false
+
+            NSLayoutConstraint.activate([
+                hostingView.leadingAnchor.constraint(equalTo: button.leadingAnchor),
+                hostingView.trailingAnchor.constraint(equalTo: button.trailingAnchor),
+                hostingView.topAnchor.constraint(equalTo: button.topAnchor),
+                hostingView.bottomAnchor.constraint(equalTo: button.bottomAnchor)
+            ])
         }
     }
 }
